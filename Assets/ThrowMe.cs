@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ThrowMe : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class ThrowMe : MonoBehaviour
     [SerializeField] private GameObject _animatedModel;
     [SerializeField] private UnityEngine.AI.NavMeshAgent _navmeshAgent;
     [SerializeField] private Transform _hipsBone;
+    [SerializeField] private String _standUpStateName;
+    [SerializeField] private Animator _animator;
 
     private ThrowMeState _currentState = ThrowMeState.Idle;
     private void Awake()
@@ -45,16 +48,20 @@ public class ThrowMe : MonoBehaviour
 
     private void GetUpBehavior()
     {
-        AlignPositionToHips();
-        _currentState = ThrowMeState.Idle;
-        DisableRagdoll();
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName(_standUpStateName)) {
+            _currentState = ThrowMeState.Idle;
+        }
     }
 
     private void DeadBehavior()
     {
         if (Input.GetButton("Fire2"))
         {
+            AlignPositionToHips();
             _currentState = ThrowMeState.GetUp;
+            DisableRagdoll();
+
+            _animator.Play(_standUpStateName);
         }
     }
 
