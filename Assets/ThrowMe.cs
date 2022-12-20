@@ -17,6 +17,7 @@ public class ThrowMe : MonoBehaviour
     [SerializeField] private GameObject _ragdoll;
     [SerializeField] private GameObject _animatedModel;
     [SerializeField] private UnityEngine.AI.NavMeshAgent _navmeshAgent;
+    [SerializeField] private Transform _hipsBone;
 
     private ThrowMeState _currentState = ThrowMeState.Idle;
     private void Awake()
@@ -39,13 +40,14 @@ public class ThrowMe : MonoBehaviour
                 GetUpBehavior();
                 break;
         }
-        
+
     }
 
     private void GetUpBehavior()
     {
-        DisableRagdoll();
+        AlignPositionToHips();
         _currentState = ThrowMeState.Idle;
+        DisableRagdoll();
     }
 
     private void DeadBehavior()
@@ -72,7 +74,7 @@ public class ThrowMe : MonoBehaviour
         _navmeshAgent.enabled = false;
     }
 
-    private void DisableRagdoll() { 
+    private void DisableRagdoll() {
         _ragdoll.gameObject.SetActive(false);
         _animatedModel.gameObject.SetActive(true);
         _navmeshAgent.enabled = true;
@@ -96,5 +98,18 @@ public class ThrowMe : MonoBehaviour
 
             CopyTransformData(source, destination, velocity);
         }
+    }
+
+    private void AlignPositionToHips()
+    {
+        Vector3 originalHipsPosition = _hipsBone.position;
+        transform.position = _hipsBone.position;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo))
+        {
+            transform.position = new Vector3(transform.position.x, hitInfo.point.y, transform.position.z);
+        }
+
+        _hipsBone.position = originalHipsPosition;
     }
 }
