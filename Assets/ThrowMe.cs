@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class ThrowMe : MonoBehaviour
 {
@@ -48,7 +45,7 @@ public class ThrowMe : MonoBehaviour
 
     private void GetUpBehavior()
     {
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName(_standUpStateName)) {
+        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName(_standUpStateName)) {
             _currentState = ThrowMeState.Idle;
         }
     }
@@ -67,6 +64,7 @@ public class ThrowMe : MonoBehaviour
 
     private void IdleBehavior()
     {
+        Walk();
         if (Input.GetButton("Fire1"))
         {
             EnableRagdoll();
@@ -118,5 +116,21 @@ public class ThrowMe : MonoBehaviour
         }
 
         _hipsBone.position = originalHipsPosition;
+    }
+
+    private void Walk()
+    {
+       if (_navmeshAgent.enabled == false)  {
+            _navmeshAgent.isStopped = true;
+            return;
+       }
+       if (_navmeshAgent.hasPath == false || _navmeshAgent.remainingDistance < 1f)
+        ChooseNewPosition();
+    }
+
+    private void ChooseNewPosition() {
+        Vector3 randomOffset = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+        var destination = transform.position + randomOffset;
+        _navmeshAgent.SetDestination(destination);
     }
 }
