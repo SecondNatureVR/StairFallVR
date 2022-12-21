@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,15 +14,18 @@ public class ThrowMe : MonoBehaviour
 
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _ragdoll;
-    [SerializeField] private GameObject _animatedModel;
     [SerializeField] private UnityEngine.AI.NavMeshAgent _navmeshAgent;
     [SerializeField] private Transform _hipsBone;
     [SerializeField] private String _standUpStateName;
-    [SerializeField] private Animator _animator;
 
     private ThrowMeState _currentState = ThrowMeState.Idle;
+    private Rigidbody[] _ragdollRigidbodies;
+    private Animator _animator;
+
     private void Awake()
     {
+        _ragdollRigidbodies = _ragdoll.GetComponentsInChildren<Rigidbody>();
+        _animator = _ragdoll.GetComponent<Animator>();
         DisableRagdoll();
     }
 
@@ -42,7 +46,7 @@ public class ThrowMe : MonoBehaviour
         }
 
     }
-
+    
     private void GetUpBehavior()
     {
         if (!_animator.GetCurrentAnimatorStateInfo(0).IsName(_standUpStateName)) {
@@ -65,44 +69,32 @@ public class ThrowMe : MonoBehaviour
     private void IdleBehavior()
     {
         Walk();
-        if (Input.GetButton("Fire1"))
-        {
-            EnableRagdoll();
-            _currentState = ThrowMeState.Dead;
-        }
+    }
+
+    public void TriggerRagdoll(Vector3 force, Vector3 hitPoint)
+    {
+        EnableRagdoll();
+        Rigidbody hitRigidbody = _ragdollRigidbodies.OrderBy(rigidbody => Vector3.Distance(rigidbody.position, hitPoint)).First();
+
+        hitRigidbody.AddForceAtPosition(force, hitPoint, ForceMode.Impulse);
+
+        _currentState = ThrowMeState.Dead;
     }
 
     private void EnableRagdoll() {
-        CopyTransformData(_animatedModel.transform, _ragdoll.transform, _navmeshAgent.velocity);
-        _ragdoll.gameObject.SetActive(true);
-        _animatedModel.gameObject.SetActive(false);
+        _animator.enabled = false;
         _navmeshAgent.enabled = false;
+        Walk();
     }
 
     private void DisableRagdoll() {
-        _ragdoll.gameObject.SetActive(false);
-        _animatedModel.gameObject.SetActive(true);
+        foreach (var rigidbody in _ragdollRigidbodies)
+        {
+            //rigidbody.isKinematic = false;
+        }
+
+        _animator.enabled = true;
         _navmeshAgent.enabled = true;
-    }
-
-    private void CopyTransformData(Transform sourceTransform, Transform destinationTransform, Vector3 velocity) {
-        if (sourceTransform.childCount != destinationTransform.childCount) {
-            Debug.LogWarning("Invalid transform copy, they need to match transform hierarchies");
-            return;
-        }
-
-        for (int i = 0; i < sourceTransform.childCount; i++) {
-            var source = sourceTransform.GetChild(i);
-            var destination = destinationTransform.GetChild(i);
-            destination.position = source.position;
-            destination.rotation = source.rotation;
-            var rb = destination.GetComponent<Rigidbody>();
-            if (rb != null) {
-                rb.velocity = velocity;
-            }
-
-            CopyTransformData(source, destination, velocity);
-        }
     }
 
     private void AlignPositionToHips()
