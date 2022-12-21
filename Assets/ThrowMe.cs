@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using UnityEditor.Search;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,6 +22,7 @@ public class ThrowMe : MonoBehaviour
     private ThrowMeState _currentState = ThrowMeState.Idle;
     private Rigidbody[] _ragdollRigidbodies;
     private Animator _animator;
+    private Vector3 _lastPos;
 
     private void Awake()
     {
@@ -32,6 +34,10 @@ public class ThrowMe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_ragdoll.transform.position != _lastPos)
+        {
+            _lastPos = _ragdoll.transform.position;
+        }
         switch (_currentState)
         {
             case ThrowMeState.Idle:
@@ -56,7 +62,7 @@ public class ThrowMe : MonoBehaviour
 
     private void DeadBehavior()
     {
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2") || isStable())
         {
             AlignPositionToHips();
             _currentState = ThrowMeState.GetUp;
@@ -69,6 +75,18 @@ public class ThrowMe : MonoBehaviour
     private void IdleBehavior()
     {
         Walk();
+    }
+
+    private bool isStable()
+    {
+        foreach (var rb in _ragdollRigidbodies)
+        {
+            if (!rb.IsSleeping())
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void TriggerRagdoll(Vector3 force, Vector3 hitPoint)
