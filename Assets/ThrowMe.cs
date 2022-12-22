@@ -23,8 +23,6 @@ public class ThrowMe : MonoBehaviour
     private ThrowMeState _currentState = ThrowMeState.Idle;
     private Rigidbody[] _ragdollRigidbodies;
     private Animator _animator;
-    private Grabber _grabber;
-
     private void Awake()
     {
         _ragdollRigidbodies = _ragdoll.GetComponentsInChildren<Rigidbody>();
@@ -71,7 +69,7 @@ public class ThrowMe : MonoBehaviour
 
     private void IdleBehavior()
     {
-        Walk();
+        //Walk();
     }
 
     private bool isStable()
@@ -98,15 +96,11 @@ public class ThrowMe : MonoBehaviour
 
     public void GrabRagdoll(Grabber grabber) {
         EnableRagdoll();
+        foreach (var rb in _ragdollRigidbodies)
+        {
+            rb.velocity = Vector3.zero;
+        }
         _currentState = ThrowMeState.Dead;
-
-        _grabber = grabber;
-        
-    }
-
-    public bool isGrabbed()
-    {
-        return _grabber != null;
     }
 
     private void EnableRagdoll() {
@@ -116,11 +110,6 @@ public class ThrowMe : MonoBehaviour
     }
 
     private void DisableRagdoll() {
-        foreach (var rigidbody in _ragdollRigidbodies)
-        {
-            //rigidbody.isKinematic = false;
-        }
-
         _animator.enabled = true;
         _navmeshAgent.enabled = true;
     }
@@ -141,7 +130,6 @@ public class ThrowMe : MonoBehaviour
     private void Walk()
     {
        if (_navmeshAgent.enabled == false)  {
-            _navmeshAgent.isStopped = true;
             return;
        }
        if (_navmeshAgent.hasPath == false || _navmeshAgent.remainingDistance < 1f)
