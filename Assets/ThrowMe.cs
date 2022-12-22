@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Cinemachine.Utility;
 using UnityEditor.Search;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,7 +23,7 @@ public class ThrowMe : MonoBehaviour
     private ThrowMeState _currentState = ThrowMeState.Idle;
     private Rigidbody[] _ragdollRigidbodies;
     private Animator _animator;
-    private Vector3 _lastPos;
+    private Grabber _grabber;
 
     private void Awake()
     {
@@ -34,10 +35,6 @@ public class ThrowMe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_ragdoll.transform.position != _lastPos)
-        {
-            _lastPos = _ragdoll.transform.position;
-        }
         switch (_currentState)
         {
             case ThrowMeState.Idle:
@@ -62,7 +59,7 @@ public class ThrowMe : MonoBehaviour
 
     private void DeadBehavior()
     {
-        if (Input.GetButton("Fire2") || isStable())
+        if (isStable())
         {
             AlignPositionToHips();
             _currentState = ThrowMeState.GetUp;
@@ -97,6 +94,19 @@ public class ThrowMe : MonoBehaviour
         hitRigidbody.AddForceAtPosition(force, hitPoint, ForceMode.Impulse);
 
         _currentState = ThrowMeState.Dead;
+    }
+
+    public void GrabRagdoll(Grabber grabber) {
+        EnableRagdoll();
+        _currentState = ThrowMeState.Dead;
+
+        _grabber = grabber;
+        
+    }
+
+    public bool isGrabbed()
+    {
+        return _grabber != null;
     }
 
     private void EnableRagdoll() {
@@ -142,5 +152,13 @@ public class ThrowMe : MonoBehaviour
         Vector3 randomOffset = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
         var destination = transform.position + randomOffset;
         _navmeshAgent.SetDestination(destination);
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+            //TriggerRagdoll((collider.transform.position - transform.position).normalized, collider.attachedRigidbody.position);
+        if (collider.gameObject.layer != 7 && collider.transform.root != transform ) {
+            TriggerRagdoll(Vector3.zero, collider.attachedRigidbody.position);
+        }
     }
 }

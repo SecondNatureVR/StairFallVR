@@ -17,11 +17,11 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             _timeMouseButtonDown = Time.time;
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(1))
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
