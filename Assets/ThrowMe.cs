@@ -5,7 +5,7 @@ using UnityEditor.Search;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ThrowMe : MonoBehaviour
+public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
 {
     private enum ThrowMeState
     {
@@ -23,6 +23,17 @@ public class ThrowMe : MonoBehaviour
     private ThrowMeState _currentState = ThrowMeState.Idle;
     private Rigidbody[] _ragdollRigidbodies;
     private Animator _animator;
+
+    public void OnGrabBegin()
+    {
+        Debug.Log("GrabBegin Detected");
+        EnableRagdoll();
+    }
+    public void OnGrabEnd()
+    {
+        Debug.Log("GrabEnd Detected");
+        DeadBehavior();
+    }
     private void Awake()
     {
         _ragdollRigidbodies = _ragdoll.GetComponentsInChildren<Rigidbody>();
@@ -69,7 +80,7 @@ public class ThrowMe : MonoBehaviour
 
     private void IdleBehavior()
     {
-        //Walk();
+        // Walk();
     }
 
     private bool isStable()
@@ -106,7 +117,6 @@ public class ThrowMe : MonoBehaviour
     private void EnableRagdoll() {
         _animator.enabled = false;
         _navmeshAgent.enabled = false;
-        Walk();
     }
 
     private void DisableRagdoll() {
