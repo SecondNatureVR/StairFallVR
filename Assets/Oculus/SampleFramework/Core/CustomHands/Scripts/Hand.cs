@@ -57,6 +57,7 @@ namespace OVRTouchSample
 
         private Collider[] m_colliders = null;
         private bool m_collisionEnabled = true;
+        public bool isGrabbing { get { return m_collisionEnabled; } }
         private OVRGrabber m_grabber;
 
         List<Renderer> m_showAfterInputFocusAcquired;

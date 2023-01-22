@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameManager
   - Stairs
+  - Grabbers
   layers:
   - Default
   - TransparentFX

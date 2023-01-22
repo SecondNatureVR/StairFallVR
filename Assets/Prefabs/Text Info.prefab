@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 2444504985211009557}
+  fontScale: 1.91
 --- !u!1 &3298356645404370902
 GameObject:
   m_ObjectHideFlags: 0

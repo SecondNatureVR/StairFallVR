@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -22,7 +20,7 @@ public class DamageUI : MonoBehaviour
     [ExecuteInEditMode]
     void Update()
     {
-        if (Vector3.Distance(transform.position, anchor.position) > offset * 1.05f)
+        if (Vector3.Distance(transform.position, anchor.position) > offset * 1.005f)
             transform.position = anchor.position + Vector3.up * offset;
         textMesh.SetText($"Damage: {Mathf.CeilToInt(game.damage)}");
 

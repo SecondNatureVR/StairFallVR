@@ -1,14 +1,14 @@
 using System;
 using System.Linq;
-using Cinemachine.Utility;
-using UnityEditor.Search;
+using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.Events;
 
 [ExecuteInEditMode]
 public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
 {
-    private enum ThrowMeState
+    public UnityEvent OnGrabbedEvent;
+    public enum ThrowMeState
     {
         Idle,
         Dead,
@@ -19,6 +19,7 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
     [SerializeField] private Transform _hipsBone;
     [SerializeField] private String _standUpStateName;
 
+    private GameManager game;
     private ThrowMeState _currentState = ThrowMeState.Idle;
     private Rigidbody[] _ragdollRigidbodies;
     private Animator _animator;
@@ -35,6 +36,8 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
     }
     private void Awake()
     {
+        // TODO: Decouple
+        game = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         _ragdollRigidbodies = _ragdoll.GetComponentsInChildren<Rigidbody>();
         _animator = _ragdoll.GetComponent<Animator>();
         DisableRagdoll();
@@ -69,11 +72,14 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
     {
         if (isStable())
         {
-            AlignPositionToHips();
-            _currentState = ThrowMeState.GetUp;
-            DisableRagdoll();
+            // TODO: Decouple
+            game.ResetScene();
 
-            _animator.Play(_standUpStateName);
+            //AlignPositionToHips();
+            //_currentState = ThrowMeState.GetUp;
+            //DisableRagdoll();
+
+            //_animator.Play(_standUpStateName);
         }
     }
 
@@ -105,12 +111,15 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
     }
 
     public void GrabRagdoll(Grabber grabber) {
+        // TODO: Decouple
+        game.StartTimer();
         EnableRagdoll();
         foreach (var rb in _ragdollRigidbodies)
         {
             rb.velocity = Vector3.zero;
         }
         _currentState = ThrowMeState.Dead;
+        OnGrabbedEvent.Invoke();
     }
 
     private void EnableRagdoll() {
@@ -136,9 +145,10 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
 
     private void OnTriggerEnter(Collider collider)
     {
-            //TriggerRagdoll((collider.transform.position - transform.position).normalized, collider.attachedRigidbody.position);
         if (collider.gameObject.layer != 7 && collider.transform.root != transform ) {
-            TriggerRagdoll(Vector3.zero, collider.attachedRigidbody.position);
+            var grabber = collider.GetComponent<OVRTouchSample.Hand>();
+            if (grabber && grabber.isGrabbing)
+                TriggerRagdoll(Vector3.zero, collider.attachedRigidbody.position);
         }
     }
 }
