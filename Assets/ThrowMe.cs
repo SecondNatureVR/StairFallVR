@@ -5,6 +5,7 @@ using UnityEditor.Search;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[ExecuteInEditMode]
 public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
 {
     private enum ThrowMeState
@@ -14,9 +15,7 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
         GetUp
     }
 
-    [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _ragdoll;
-    [SerializeField] private UnityEngine.AI.NavMeshAgent _navmeshAgent;
     [SerializeField] private Transform _hipsBone;
     [SerializeField] private String _standUpStateName;
 
@@ -116,12 +115,10 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
 
     private void EnableRagdoll() {
         _animator.enabled = false;
-        _navmeshAgent.enabled = false;
     }
 
     private void DisableRagdoll() {
         _animator.enabled = true;
-        _navmeshAgent.enabled = true;
     }
 
     private void AlignPositionToHips()
@@ -135,21 +132,6 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
         }
 
         _hipsBone.position = originalHipsPosition;
-    }
-
-    private void Walk()
-    {
-       if (_navmeshAgent.enabled == false)  {
-            return;
-       }
-       if (_navmeshAgent.hasPath == false || _navmeshAgent.remainingDistance < 1f)
-        ChooseNewPosition();
-    }
-
-    private void ChooseNewPosition() {
-        Vector3 randomOffset = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
-        var destination = transform.position + randomOffset;
-        _navmeshAgent.SetDestination(destination);
     }
 
     private void OnTriggerEnter(Collider collider)

@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 8534588368139200926}
   - component: {fileID: 3050540058958998410}
   - component: {fileID: 6954010473755202592}
+  - component: {fileID: 3333065218569743548}
   m_Layer: 0
   m_Name: mixamorig:Spine2
   m_TagString: Untagged
@@ -165,7 +166,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691373071777222746}
   serializedVersion: 4
-  m_Mass: 3.125
+  m_Mass: 30.125
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -196,7 +197,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000008153147, y: 0.3492908, z: -0.04276137}
+  m_ConnectedAnchor: {x: -0.000008153187, y: 0.34929127, z: -0.04276137}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -247,6 +248,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &3333065218569743548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691373071777222746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &904299375316393126
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +305,7 @@ GameObject:
   - component: {fileID: 6085153976807744486}
   - component: {fileID: 2699287469981522367}
   - component: {fileID: 5749912358700646885}
+  - component: {fileID: 1482095435209537030}
   m_Layer: 0
   m_Name: mixamorig:Hips
   m_TagString: Untagged
@@ -313,7 +328,7 @@ Transform:
   - {fileID: 1721857634589590407}
   - {fileID: 4508202068971295045}
   - {fileID: 2565757961301696415}
-  m_Father: {fileID: 1467195512644254079}
+  m_Father: {fileID: 6338857027453103956}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6085153976807744486
@@ -381,6 +396,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &1482095435209537030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950667811240470956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &1152620557277612845
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +422,7 @@ GameObject:
   - component: {fileID: 3692155742507640875}
   - component: {fileID: 7656017871909615349}
   - component: {fileID: 8664177243625056691}
+  - component: {fileID: 8223180896116368373}
   m_Layer: 0
   m_Name: mixamorig:RightLeg
   m_TagString: Untagged
@@ -479,7 +508,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000019557774, y: 0.40599394, z: 0.000000044703484}
+  m_ConnectedAnchor: {x: -0.000000016530976, y: 0.40599442, z: 0.00000005075708}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -530,6 +559,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &8223180896116368373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152620557277612845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &1432189869254847951
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +776,7 @@ GameObject:
   - component: {fileID: 278412548015823560}
   - component: {fileID: 3565723609550886795}
   - component: {fileID: 7792271944189139196}
+  - component: {fileID: 4189152381832755921}
   m_Layer: 0
   m_Name: mixamorig:LeftForeArm
   m_TagString: Untagged
@@ -819,7 +862,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000016391277, y: 0.274047, z: -0.000000040512532}
+  m_ConnectedAnchor: {x: -0.00000015646219, y: 0.274047, z: 0.0000004437752}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -870,6 +913,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &4189152381832755921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062879523875750593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &2219123745949033597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,6 +1289,7 @@ GameObject:
   - component: {fileID: 8156932647340825999}
   - component: {fileID: 1582915720067615606}
   - component: {fileID: 473993737552462171}
+  - component: {fileID: 2939961269193526549}
   m_Layer: 0
   m_Name: mixamorig:LeftArm
   m_TagString: Untagged
@@ -1318,7 +1375,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.18760833, y: 0.08853488, z: -0.018453479}
+  m_ConnectedAnchor: {x: -0.18760833, y: 0.08853439, z: -0.018453483}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1369,61 +1426,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
---- !u!1 &4622853099163888338
-GameObject:
+--- !u!114 &2939961269193526549
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1467195512644254079}
-  - component: {fileID: 913867373}
-  m_Layer: 0
-  m_Name: Ragdoll
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1467195512644254079
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4622853099163888338}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6337086885436190642}
-  - {fileID: 827187563205052925}
-  - {fileID: 1851961662154718611}
-  m_Father: {fileID: 6338857027453103956}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &913867373
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4622853099163888338}
+  m_GameObject: {fileID: 4605304179119367932}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4b3baec73223191489e677504cfc2ef0, type: 3}
-  m_Controller: {fileID: 9100000, guid: 5c51d81445ccd4945bc88ef05bb26036, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &4696508994527994035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1548,7 @@ GameObject:
   - component: {fileID: 1055709187560857843}
   - component: {fileID: 1685535830328394243}
   - component: {fileID: 3280444507262792346}
+  - component: {fileID: 4409375918584518127}
   m_Layer: 0
   m_Name: mixamorig:LeftLeg
   m_TagString: Untagged
@@ -1618,7 +1634,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000000144355, y: 0.4059942, z: -0.000000053551048}
+  m_ConnectedAnchor: {x: 0.000000011641532, y: 0.40599468, z: -0.00000004749745}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1669,6 +1685,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &4409375918584518127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4834105382809298646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &4834933388859624849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,6 +1838,7 @@ GameObject:
   - component: {fileID: 1566475510160644582}
   - component: {fileID: 2554972573255215028}
   - component: {fileID: 5069418761695179510}
+  - component: {fileID: 2240557179013734236}
   m_Layer: 0
   m_Name: mixamorig:LeftUpLeg
   m_TagString: Untagged
@@ -1894,7 +1924,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.09123875, y: -0.066571675, z: -0.00055397465}
+  m_ConnectedAnchor: {x: -0.09123875, y: -0.06657215, z: -0.00055397465}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1945,6 +1975,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &2240557179013734236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5198270011269352633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &5205148664730946348
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,6 +2097,7 @@ GameObject:
   - component: {fileID: 8206819560931815592}
   - component: {fileID: 3062937623562546219}
   - component: {fileID: 1118685164523900990}
+  - component: {fileID: 7193413671791930054}
   m_Layer: 0
   m_Name: mixamorig:RightUpLeg
   m_TagString: Untagged
@@ -2139,7 +2183,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.09125034, y: -0.06655566, z: -0.00055331993}
+  m_ConnectedAnchor: {x: 0.09125034, y: -0.06655613, z: -0.00055331993}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2190,6 +2234,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &7193413671791930054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5406596872062154635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &5562420548145511681
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,6 +2291,7 @@ GameObject:
   - component: {fileID: 3987787604479873636}
   - component: {fileID: 4414983822234118568}
   - component: {fileID: 5165030816308299408}
+  - component: {fileID: 8755470292405371791}
   m_Layer: 0
   m_Name: mixamorig:RightForeArm
   m_TagString: Untagged
@@ -2319,7 +2377,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000018253922, y: 0.27404693, z: -0.000000067055225}
+  m_ConnectedAnchor: {x: 0.00000017881393, y: 0.27404693, z: 0.0000004149042}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -2370,6 +2428,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &8755470292405371791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5664149372177268742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &5667831940193642459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,6 +2486,7 @@ GameObject:
   - component: {fileID: 7777041941748212722}
   - component: {fileID: 7123771355376545353}
   - component: {fileID: 5989324392224456748}
+  - component: {fileID: 2532224790111118099}
   m_Layer: 0
   m_Name: mixamorig:Head
   m_TagString: Untagged
@@ -2498,7 +2570,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000028036186, y: 0.25331697, z: 0.040786628}
+  m_ConnectedAnchor: {x: -0.00000028008526, y: 0.25331652, z: 0.04078662}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2549,6 +2621,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &2532224790111118099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746383873289606462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &5757522798763622727
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,7 +2726,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1467195512644254079}
+  m_Father: {fileID: 6338857027453103956}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3011391672115491968
@@ -2758,7 +2843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6338857027453103956}
-  - component: {fileID: 6338857027453103958}
+  - component: {fileID: 1478062324929571346}
   - component: {fileID: 6338857027453103959}
   - component: {fileID: 7485089794999270241}
   m_Layer: 0
@@ -2776,36 +2861,36 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6338857027453103947}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -5.14, y: 7.72, z: 0}
+  m_LocalPosition: {x: -7.09, y: 7.75, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1467195512644254079}
+  - {fileID: 6337086885436190642}
+  - {fileID: 827187563205052925}
+  - {fileID: 1851961662154718611}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!195 &6338857027453103958
-NavMeshAgent:
+--- !u!95 &1478062324929571346
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6338857027453103947}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_Avatar: {fileID: 9000000, guid: 4b3baec73223191489e677504cfc2ef0, type: 3}
+  m_Controller: {fileID: 9100000, guid: 5c51d81445ccd4945bc88ef05bb26036, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &6338857027453103959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2818,9 +2903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ffb75e008ea0941b07c0fe39be1329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
-  _ragdoll: {fileID: 4622853099163888338}
-  _navmeshAgent: {fileID: 6338857027453103958}
+  _ragdoll: {fileID: 6338857027453103947}
   _hipsBone: {fileID: 1851961662154718611}
   _standUpStateName: Get Up
 --- !u!136 &7485089794999270241
@@ -2838,14 +2921,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.27
-  m_Height: 1.73
+  m_Radius: 0.25
+  m_Height: 2.02
   m_Direction: 1
-  m_Center: {x: 0, y: 1.05, z: 0}
+  m_Center: {x: 4.633376e-18, y: 0.86, z: -0.030923948}
 --- !u!1 &6527694975848108485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,6 +2942,7 @@ GameObject:
   - component: {fileID: 6421143503615929979}
   - component: {fileID: 7580952486566055729}
   - component: {fileID: 4214609032985708062}
+  - component: {fileID: 7985996242982065084}
   m_Layer: 0
   m_Name: mixamorig:RightArm
   m_TagString: Untagged
@@ -2944,7 +3028,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.18760777, y: 0.088566646, z: -0.018452678}
+  m_ConnectedAnchor: {x: 0.18760777, y: 0.08856619, z: -0.018452682}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -2995,6 +3079,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!114 &7985996242982065084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6527694975848108485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50196b50a57bca7478567063ef70f3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textInfoPrefab: {fileID: 1300665172197042489, guid: 6f8ccc885cbacf14fbb2edf6edbbfdb8, type: 3}
 --- !u!1 &6539712058111839420
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,7 +3501,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1467195512644254079}
+  m_Father: {fileID: 6338857027453103956}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7219158172888991227
