@@ -24,6 +24,15 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
     private Rigidbody[] _ragdollRigidbodies;
     private Animator _animator;
 
+    private void Awake()
+    {
+        // TODO: Decouple
+        game = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        _ragdollRigidbodies = _ragdoll.GetComponentsInChildren<Rigidbody>();
+        _animator = _ragdoll.GetComponent<Animator>();
+        DisableRagdoll();
+    }
+
     public void OnGrabBegin()
     {
         Debug.Log("GrabBegin Detected");
@@ -33,14 +42,6 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
     {
         Debug.Log("GrabEnd Detected");
         DeadBehavior();
-    }
-    private void Awake()
-    {
-        // TODO: Decouple
-        game = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        _ragdollRigidbodies = _ragdoll.GetComponentsInChildren<Rigidbody>();
-        _animator = _ragdoll.GetComponent<Animator>();
-        DisableRagdoll();
     }
 
     // Update is called once per frame
@@ -128,19 +129,6 @@ public class ThrowMe : MonoBehaviour, IGrabbableMessageTarget
 
     private void DisableRagdoll() {
         _animator.enabled = true;
-    }
-
-    private void AlignPositionToHips()
-    {
-        Vector3 originalHipsPosition = _hipsBone.position;
-        transform.position = _hipsBone.position;
-
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo))
-        {
-            transform.position = new Vector3(transform.position.x, hitInfo.point.y, transform.position.z);
-        }
-
-        _hipsBone.position = originalHipsPosition;
     }
 
     private void OnTriggerEnter(Collider collider)

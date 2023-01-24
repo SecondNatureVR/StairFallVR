@@ -12,7 +12,7 @@ public class PlayArea : MonoBehaviour
     private void Start()
     {
         game = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        grabbers = GameObject.FindWithTag("Player").GetComponentsInChildren<OVRGrabber>();
+        grabbers = GameObject.FindGameObjectsWithTag("Grabbers").Select(g => g.GetComponent<OVRGrabber>()).ToArray();
         playArea = GetComponent<BoxCollider>();
     }
 
@@ -24,7 +24,6 @@ public class PlayArea : MonoBehaviour
             {
                 game.DisablePlayer();
                 gameObject.SetActive(false);
-                break;
             }
         }
     }

@@ -9,17 +9,28 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Transform playerHMD;
     [SerializeField] public GameObject ragdollPrefab;
     [SerializeField] public float gravity = 9.81f;
-    [SerializeField] public HighscoreScriptableObject highscore;
+    [SerializeField] public SavedScore highscore;
+    [SerializeField] public SavedScore lastScore;
     [SerializeField] public ResetTimer timer;
     private OVRGrabber[] grabbers;
     private bool playerDisabled = false;
-    public float damage;
+    private float _totalDamage = 0;
+    private float _lastBufferDamage = 0;
+    private float _lastBufferTime = 0;
+    private float _bufferWindow = 0.3f;
+
+    public float TotalDamage {  get { return _totalDamage;  } }
+
+    public Action<float> OnDamageReceived;
 
     private void Start()
     {
         grabbers = GameObject.FindGameObjectsWithTag("Grabbers").Select(g => g.GetComponent<OVRGrabber>()).ToArray();
         Physics.gravity = Vector3.down * gravity;
-        damage = 0;
+        foreach (var d in FindObjectsOfType<Damageable>())
+        {
+            d.OnDamage += HandleDamage;
+        }
     }
 
     private void OnGUI()
@@ -29,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetScene()
     {
+        lastScore.value = TotalDamage;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -46,15 +58,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateDamage(float damage)
+    public void HandleDamage(float damage)
     {
-        this.damage += damage;
+        _totalDamage += damage;
         if (playerDisabled != false)
         {
             DisablePlayer();
         }
 
-        highscore.score = Math.Max(this.damage, highscore.score);
+        highscore.value = Math.Max(_totalDamage, highscore.value);
     }
 
     public void StartTimer()
@@ -70,5 +82,15 @@ public class GameManager : MonoBehaviour
             grabber.enabled = false;
         }
         playerDisabled = true;
+    }
+
+    public void LateUpdate()
+    {
+        if (_totalDamage > _lastBufferDamage && Time.time - _lastBufferTime > _bufferWindow)
+        {
+            _lastBufferTime = Time.time;
+            OnDamageReceived.Invoke(_totalDamage - _lastBufferDamage);
+            _lastBufferDamage = _totalDamage;
+        }
     }
 }

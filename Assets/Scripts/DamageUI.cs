@@ -15,6 +15,15 @@ public class DamageUI : MonoBehaviour
     {
         game = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         scaleReference = Vector3.Distance(transform.position, mainCamera.transform.position);
+        game.OnDamageReceived += HandleDamage;
+    }
+
+    public void HandleDamage(float damage)
+    {
+        if (game.TotalDamage > 0)
+            textMesh.SetText($"Damage: {Mathf.CeilToInt(game.TotalDamage)}");
+        else
+            textMesh.SetText("Throw Me!");
     }
 
     [ExecuteInEditMode]
@@ -22,9 +31,8 @@ public class DamageUI : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, anchor.position) > offset * 1.005f)
             transform.position = anchor.position + Vector3.up * offset;
-        textMesh.SetText($"Damage: {Mathf.CeilToInt(game.damage)}");
 
-        float scale = Mathf.Max(Vector3.Distance(transform.position, mainCamera.transform.position) / scaleReference, 1);
+        float scale = Mathf.Max(Vector3.Distance(transform.position, mainCamera.transform.position) / scaleReference, 1) * 1.25f;
         transform.localScale = new Vector3(scale, scale, scale);
     }
 }
